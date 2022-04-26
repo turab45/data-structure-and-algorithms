@@ -37,12 +37,43 @@ for i in range(5):
 
 # round score to nearesr 10
 s = s.round(-1)
-print(s)
+#print(s)
 
 #print(avg_final_half_year)
 #print(avg_final_half_year2)
 
 
-"""====================================== EXERCISE 1: Test Scores ========================="""
+# standard deviation of the series
+std = s.std(ddof=0)
+#print(std)
 
+# beyond the exercise
+np.random.seed(0)
+months = "Sep Oct Nov Dec Jan Feb Mar Apr May Jun".split(" ")
+vals = np.random.randint(40,60,10)
+s =  pd.Series(vals, index=months)
+mean = 85 - s.mean()
+s = s+ mean
+#print(s)
+
+
+# exercise 3: counting 10's digits
+s = pd.Series(np.random.randint(0,100,10))
+s = (s/10).astype(np.int8)
+#print(s)
+
+s = pd.Series(np.random.randint(0,100,10))
+#print(s[s<30])
+s[s<= s.mean()] = 9999
+#print(s)
+
+"""Generate a series of 100,000 floats in a normal distribution, with a mean at 0 and a
+    standard deviation of 100.
+"""
+np.random.seed(0)
+
+s = pd.Series(np.random.normal(0,100,100_000))
+#print(s.describe())
+s[s == s.min()] = 5 * s.max()
+#print(s.describe())
 
