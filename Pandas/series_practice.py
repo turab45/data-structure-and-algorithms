@@ -77,3 +77,25 @@ s = pd.Series(np.random.normal(0,100,100_000))
 s[s == s.min()] = 5 * s.max()
 #print(s.describe())
 
+"""28 values of temperatues taken from a normal distribution with mean = 20 and standard deviation = 5, starts from Sun to Sat"""
+
+np.random.seed(0)
+
+days = "Sun Mon Tue Wed Thu Fri Sat".split(" ")
+s = pd.Series(np.random.normal(20, 5, 28), index=days*4).round().astype(np.int8)
+
+# what was the mean temperature on mondays?
+monday_temp = s['Mon'].mean()
+
+# what was the mean temperature on weekends (sat and sunday)? this is my logic
+sat_temp = s['Sat'].mean()
+weekend_temp = s['Sun'].mean() + sat_temp
+
+# with fancy indexing
+weekend_temp2 = s[['Sun','Sat']].mean()
+print(weekend_temp2)
+print(weekend_temp/2)
+
+# common temperatures and how often does each appear?
+common_temps = s.value_counts()
+#print(common_temps)
