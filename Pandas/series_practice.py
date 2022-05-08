@@ -93,8 +93,8 @@ weekend_temp = s['Sun'].mean() + sat_temp
 
 # with fancy indexing
 weekend_temp2 = s[['Sun','Sat']].mean()
-print(weekend_temp2)
-print(weekend_temp/2)
+#print(weekend_temp2)
+#print(weekend_temp/2)
 
 # common temperatures and how often does each appear?
 common_temps = s.value_counts()

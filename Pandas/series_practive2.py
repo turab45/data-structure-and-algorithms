@@ -12,7 +12,7 @@ q1 = data.value_counts(normalize=True)[[1,6]] * 100
 q2 = data.value_counts(normalize=True)[[3,4,5,6]] * 100
 
 
-data2 = pd.read_csv("taxi-distance.csv", header=None)
+data2 = pd.read_csv("taxi-distance.csv", header=None )
 print(data2)
 
 data2.dropna(inplace=True)
