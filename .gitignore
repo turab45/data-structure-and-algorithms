@@ -1,1 +1,2 @@
-/django/dj
+# ignore the files in dj folder from git
+django/dj
