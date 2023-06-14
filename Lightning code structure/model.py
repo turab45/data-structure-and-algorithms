@@ -24,18 +24,18 @@ class NN(L.LightningModule):
     loss, scores, y = self._common_step(batch, batch_idx)
     accuracy = self.accuracy(scores, y)
     f1_score = self.f1_score(scores, y)
-    self.log_dict({"train_loss: ":loss, "train_accuracy:":accuracy, "train_f1_score:":f1_score},
+    self.log_dict({"train_loss":loss, "train_accuracy":accuracy, "train_f1_score":f1_score},
                   on_step=False, on_epoch=True, prog_bar=True)
     return loss
   
   def validation_step(self, batch, batch_idx):
     loss, scores, y = self._common_step(batch, batch_idx)
-    self.log("Validation loss: ", loss)
+    self.log("val_loss", loss)
     return loss
   
   def test_step(self, batch, batch_idx):
     loss, scores, y = self._common_step(batch, batch_idx)
-    self.log("Test loss: ", loss)
+    self.log("test_loss", loss)
     return loss
   
   def predict_step(self, batch, batch_idx):
